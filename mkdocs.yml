@@ -42,6 +42,8 @@ theme:
     - content.tabs.link
     - content.code.copy
     - content.code.select
+    - content.action.edit
+    - content.action.view
   font:
     text: Inter
     code: Fira Code
@@ -192,3 +194,6 @@ plugins:
         - tags
   - macros: # pip install mkdocs-macros-plugin
       module_name: hooks/macros
+  - git-revision-date-localized: # pip install mkdocs-git-revision-date-localized-plugin
+      enabled: !ENV [CI, false]
+      locale: ru
