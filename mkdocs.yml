@@ -10,7 +10,7 @@ copyright: © Bugo, 2009—2025
 
 theme:
   name: material
-  custom_dir: ./overrides
+  custom_dir: overrides
   logo: assets/logo.svg
   language: ru
   icon:
@@ -192,6 +192,3 @@ plugins:
         - tags
   - macros: # pip install mkdocs-macros-plugin
       module_name: hooks/macros
-  - git-revision-date-localized: # pip install mkdocs-git-revision-date-localized-plugin
-      enabled: !ENV [CI, false]
-      locale: ru
