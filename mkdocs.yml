@@ -10,7 +10,7 @@ copyright: © Bugo, 2009—2025
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: ./overrides
   logo: assets/logo.svg
   language: ru
   icon:
