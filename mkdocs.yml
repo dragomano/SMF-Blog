@@ -1,0 +1,194 @@
+site_name: Логово медведя
+site_description: Обзоры полезных модификаций для Simple Machines Forum (SMF)
+site_author: Bugo
+site_url: https://dragomano.ru/
+
+repo_url: https://github.com/dragomano/SMF-Blog
+edit_uri: edit/main/docs/
+
+license: by-nc-sa
+
+copyright: © Bugo, 2009—2025
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/logo.svg
+  language: ru
+  icon:
+    tag:
+      default: material/tag
+      star: material/star
+      hooks: material/webhook
+      smf-2-0: material/forum
+      smf-2-1: material/forum
+      smf-3-0: material/forum
+  favicon: assets/favicon.png
+  features:
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.footer
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - content.tabs.link
+    - content.code.copy
+    - content.code.select
+  font:
+    text: Inter
+    code: Fira Code
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: blue grey
+      scheme: default
+      toggle:
+        icon: material/weather-night
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      accent: orange
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+
+extra:
+  generator: false
+  social:
+    - icon: material/creative-commons
+      link: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru
+      name: Лицензия CC BY-NC-SA 4.0
+    - icon: material/github
+      link: https://github.com/dragomano/SMF-Blog
+      name: GitHub
+    - icon: material/sitemap
+      link: /sitemap.xml
+      name: Sitemap
+    - icon: material/rss
+      link: /rss.xml
+      name: RSS
+  status:
+    new: Новое
+    deprecated: Скоро будет удалено
+  tags:
+    рейтинг: star
+    хуки: hooks
+    SMF 2.0: smf-2-0
+    SMF 2.1: smf-2-1
+    SMF 3.0: smf-3-0
+
+extra_javascript:
+  - extra.js
+
+extra_css:
+  - extra.css
+
+markdown_extensions:
+  - meta
+  - tables
+  - smarty
+  - toc:
+      permalink: ⚓︎
+      permalink_title: Постоянная ссылка
+      toc_depth: 2
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - admonition
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - md_in_html
+  - attr_list
+  - pymdownx.keys
+
+hooks:
+  - hooks/fonts.py
+  - hooks/navigation.py
+  - hooks/related.py
+  - hooks/sort_tags.py
+
+plugins:
+  # - offline:
+  #     enabled: !ENV [OFFLINE, false]
+  - redirects: # pip install mkdocs-redirects
+      redirect_maps:
+        "kwork.md": "https://kwork.ru?ref=34293"
+        "hosting.md": "https://billing.lite-host.in/aff.php?aff=1544"
+  - privacy:
+      enabled: !ENV [CI, false]
+  - tags
+  - search:
+      lang:
+        - en
+        - ru
+  - minify: # pip install mkdocs-minify-plugin
+      minify_html: true
+  - glightbox: # pip install mkdocs-glightbox
+      auto_caption: true
+      caption_position: top
+  - pub-social: # pip install mkdocs-publisher
+      site_name_in_title:
+        location: after
+      og:
+        locale: ru_RU
+  - blog:
+      blog_dir: .
+      authors_file: "posts/.authors.yml"
+      post_url_format: "{categories}/{slug}"
+      categories_name: Все рубрики
+      categories_url_format: "{slug}"
+      post_readtime: false
+      post_excerpt: required
+      blog_toc: true
+      post_excerpt_max_authors: 0
+      archive: false
+  - awesome-nav # pip install mkdocs-awesome-nav
+  - rss: # pip install mkdocs-rss-plugin
+      use_git: false
+      match_path: posts/*
+      date_from_meta:
+        as_creation: date
+        as_update: update
+      feed_ttl: 1440
+      image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
+      length: 12
+      pretty_print: false
+      abstract_chars_count: 160 # -1 for full content
+      abstract_delimiter: <!-- more -->
+      json_feed_enabled: false
+      feeds_filenames:
+        rss_created: rss.xml
+        rss_updated: rss-updated.xml
+      categories:
+        - tags
+  - macros: # pip install mkdocs-macros-plugin
+      module_name: hooks/macros

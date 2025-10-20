@@ -1,0 +1,203 @@
+.md-footer-meta__inner {
+    justify-content: center;
+}
+
+.md-source__facts {
+    display: none;
+}
+
+.md-copyright__highlight {
+    text-align: center;
+}
+
+.md-content__inner img {
+    display: block;
+    margin: 0 auto;
+}
+
+.md-tags {
+    display: flex !important;
+    align-items: center;
+}
+
+.md-tags .md-nav__link {
+    align-items: center;
+    margin-left: auto;
+}
+
+.md-header__button.md-logo img {
+    height: auto;
+}
+
+@media screen and (max-width: 76.2344em) {
+    .md-nav--primary .md-nav__title {
+        height: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .md-header__topic:first-child {
+        display: none;
+    }
+}
+
+.md-typeset .md-button {
+    border-radius: 0.3rem;
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--link-color);
+}
+
+.md-typeset .github-link {
+    background: var(--md-accent-bg-color);
+}
+
+.md-typeset .translation {
+    color: var(--md-typeset-a-color);
+}
+
+.md-typeset .extra {
+    color: var(--md-typeset-a-color);
+    border-color: hsla(var(--md-hue), 15%, 100%, 1);
+}
+
+[data-md-color-scheme="default"] {
+    .md-typeset .extra {
+        border-color: hsla(var(--md-typeset-a-color), 15%, 100%, 1);
+    }
+}
+
+@media (max-width: 720px) {
+    .md-button {
+        display: block !important;
+        margin: 4px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .md-grid {
+        max-width: 90%;
+    }
+}
+
+.md-tag--hooks {
+    background: #1d89bf !important;
+    color: white !important;
+}
+
+[data-md-color-scheme="default"] {
+    .md-tag--hooks {
+        background: #1d89bf !important;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+}
+
+.md-tag--smf-2-0 {
+    background: gray !important;
+
+    &:hover {
+        color: whitesmoke !important;
+    }
+}
+
+[data-md-color-scheme="default"] {
+    .md-tag--smf-2-0 {
+        background: rgb(212, 209, 209) !important;
+
+        &:hover {
+            color: gray !important;
+        }
+    }
+}
+
+.md-tag--smf-2-1 {
+    background: green !important;
+
+    &:hover {
+        color: whitesmoke !important;
+    }
+}
+
+[data-md-color-scheme="default"] {
+    .md-tag--smf-2-1 {
+        background: lightgreen !important;
+
+        &:hover {
+            color: gray !important;
+        }
+    }
+}
+
+.md-tag--smf-3-0 {
+    background: #f91326 !important;
+
+    &:hover {
+        color: whitesmoke !important;
+    }
+}
+
+[data-md-color-scheme="default"] {
+    .md-tag--smf-3-0 {
+        background: #e96b76 !important;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+}
+
+.md-social__link[title="Sitemap"] {
+    color: #87b7da !important;
+}
+
+.md-social__link[title="RSS"] {
+    color: orange !important;
+}
+
+.form-group {
+    display: flex;
+    gap: 5px;
+}
+
+.md-textarea {
+    margin-top: 5px;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical;/
+}
+
+.md-textarea:focus {
+    border-color: orange;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Выравнивание тегов */
+.md-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    /* Общий отступ между всеми элементами */
+}
+
+/* Правые теги */
+[class*="md-tag--smf-"] {
+    order: 2;
+    margin-left: auto;
+}
+
+/* Убираем отступы между правыми тегами */
+[class*="md-tag--smf-"]~[class*="md-tag--smf-"] {
+    margin-left: 0;
+}
+
+/* Левые теги */
+.md-tag:not([class*="md-tag--smf-"]) {
+    order: 1;
+}

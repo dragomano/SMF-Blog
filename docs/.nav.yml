@@ -1,0 +1,10 @@
+nav:
+  - Главная:
+      - index.md
+  - Хуки: hooks
+  - "*"
+  - tags
+  - about
+flatten_single_child_sections: true
+sort:
+  by: filename

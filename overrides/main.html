@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+<!-- Site title -->
+{% block htmltitle %}
+{% if page.meta and page.meta.title %}
+{% if page.is_homepage or page.meta.title == "Главная" %}
+<title>{{ config.site_name }}</title>
+{% else %}
+<title>{{ page.meta.title }} - {{ config.site_name }}</title>
+{% endif %}
+{% elif page.title and not page.is_homepage %}
+<title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+{% else %}
+<title>{{ config.site_name }}</title>
+{% endif %}
+{% endblock %}
+
+{% block extrahead %}
+{% if page and page.meta and page.meta.robots %}
+<meta name="robots" content="{{ page.meta.robots }}" />
+{% else %}
+<meta name="robots" content="index, follow" />
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if page and page.meta %}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{{ page.meta.og_type | default('Article') }}",
+      "headline": "{{ page.title | e }}",
+      "description": "{{ page.meta.description | default(config.site_description) | e }}",
+      "author": {
+        "@type": "Person",
+        "name": "Bugo",
+        "url": "https://github.com/dragomano",
+        "image": "https://avatars.githubusercontent.com/u/229402"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ config.site_name | e }}"
+      },
+      "datePublished": "{{ page.meta.date | default(git_creation_date_localized) }}",
+      "dateModified": "{{ git_revision_date_localized | default(git_creation_date_localized) }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.canonical_url }}"
+      },
+      "url": "{{ page.canonical_url }}"
+    }
+</script>
+{% endif %}
+{% endblock %}
+
+<!-- SEO meta tags -->
+<!-- {% set title = config.site_name %}
+{% if page and page.title and not page.is_homepage %}
+{% set title = page.title ~ " - " ~ title %}
+{% endif %}
+{% set description = config.site_description %}
+{% if page and page.description and not page.is_homepage %}
+{% set description = page.description %}
+{% endif %}
+{% set image = page.meta.image if page and page.meta.image else (config.site_url ~ "assets/social.png") %}
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:site_name" content="{{ config.site_name }}" />
+{% if page and page.meta and page.meta.og_type %}
+<meta property="og:type" content="{{ page.meta.og_type }}">
+{% else %}
+<meta property="og:type" content="article">
+{% endif %}
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ page.canonical_url }}" />
+<meta property="og:image" content="{{ image }}" /> -->
