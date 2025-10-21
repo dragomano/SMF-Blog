@@ -143,8 +143,8 @@ plugins:
       redirect_maps:
         "kwork.md": "https://kwork.ru?ref=34293"
         "hosting.md": "https://billing.lite-host.in/aff.php?aff=1544"
-  - privacy:
-      enabled: !ENV [CI, false]
+  #- privacy:
+  #    enabled: !ENV [CI, false]
   - tags
   - search:
       lang:
@@ -155,6 +155,7 @@ plugins:
   - glightbox: # pip install mkdocs-glightbox
       auto_caption: true
       caption_position: top
+      auto_themed: true
   - pub-social: # pip install mkdocs-publisher
       site_name_in_title:
         location: after
