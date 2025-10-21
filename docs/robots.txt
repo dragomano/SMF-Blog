@@ -4,6 +4,7 @@ Disallow: /index/
 Disallow: /tags/
 Disallow: /about/
 Disallow: /page/
+Disallow: /*/page/
 Disallow: /*?
 
 Sitemap: https://dragomano.ru/sitemap.xml
