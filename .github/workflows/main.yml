@@ -1,33 +1,59 @@
-name: main
+name: Deploy MkDocs to GitHub Pages
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
+
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
+
+      - name: Cache .cache
+        uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-${{ runner.os }}-mkdocs-${{ hashFiles('**/requirements.txt') }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: pip install pymdown-extensions
-      - run: pip install mkdocs-redirects
-      - run: pip install mkdocs-minify-plugin
-      - run: pip install mkdocs-glightbox
-      - run: pip install mkdocs-publisher
-      - run: pip install mkdocs-awesome-nav
-      - run: pip install mkdocs-rss-plugin
-      - run: pip install mkdocs-macros-plugin
-      #- run: pip install mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs gh-deploy --force
+            mkdocs-material-${{ runner.os }}-mkdocs-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build with MkDocs
+        run: mkdocs build
+        env:
+          CI: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          cname: dragomano.ru

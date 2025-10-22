@@ -1,0 +1,10 @@
+mkdocs-material
+pymdown-extensions
+mkdocs-redirects
+mkdocs-minify-plugin
+mkdocs-glightbox
+mkdocs-publisher
+mkdocs-awesome-nav
+mkdocs-rss-plugin
+mkdocs-macros-plugin
+# mkdocs-git-revision-date-localized-plugin
