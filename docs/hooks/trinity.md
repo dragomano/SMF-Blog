@@ -2,7 +2,6 @@
 title: Список всех хуков SMF 3.0
 description: Все хуки, которые могут пригодиться при создании модов для SMF 3.0.
 icon: octicons/gear-16
-draft: true
 tags:
   - хуки
 ---
