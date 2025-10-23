@@ -50,7 +50,11 @@
                   {% endif %}
                 </strong>
                 <br />
+                {% if page.url and page.url.split('/')[0] in ['articles', 'lessons'] %}
+                Автор статьи
+                {% else %}
                 {{ author.description }}
+                {% endif %}
               </span>
             </div>
             {% endfor %}
