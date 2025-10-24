@@ -156,11 +156,12 @@ plugins:
       auto_caption: true
       caption_position: top
       auto_themed: true
-  - pub-social: # pip install mkdocs-publisher
-      site_name_in_title:
-        location: after
-      og:
-        locale: ru_RU
+  - social
+  # - pub-social: # pip install mkdocs-publisher
+  #     site_name_in_title:
+  #       location: after
+  #     og:
+  #       locale: ru_RU
   - blog:
       blog_dir: .
       authors_file: "posts/.authors.yml"

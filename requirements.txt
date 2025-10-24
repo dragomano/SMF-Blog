@@ -8,3 +8,7 @@ mkdocs-awesome-nav
 mkdocs-rss-plugin
 mkdocs-macros-plugin
 # mkdocs-git-revision-date-localized-plugin
+
+# For social plugin image generation
+cairocffi
+cairosvg
