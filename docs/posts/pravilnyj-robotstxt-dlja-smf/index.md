@@ -42,7 +42,7 @@ RewriteRule ^(.*)$ / [L,R=301]
 
 ## Поддержка других модов
 
-При установке мода [Sitemap](/translations/sitemap) и включении новостей XML\RSS в админке набор правил не меняется, но добавляется пара строчек:
+При установке мода [Sitemap](/translations/sitemap) и включении новостей XML/RSS в админке набор правил не меняется, но добавляется пара строчек:
 
 ```ini
 User-agent: *
@@ -91,7 +91,7 @@ Sitemap: https://dragomano.ru/sitemap.xml #Полный URL к карте сай
 
 ## Нейросети
 
-Если вы не хотите, чтобы страницы вашего форума использовали в качестве источника ответов сервиса [Нейро от Яндекса](https://webmaster.yandex.ru/blog/yandeks-zapustil-neyro-kak-on-rabotaet), добавьте в `robots.txt` следующие строчки:
+Если вы не хотите, чтобы страницы вашего форума использовались в качестве источника ответов сервиса [Нейро от Яндекса](https://webmaster.yandex.ru/blog/yandeks-zapustil-neyro-kak-on-rabotaet), добавьте в `robots.txt` следующие строчки:
 
 ```ini
 User-Agent: YandexAdditional
