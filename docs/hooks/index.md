@@ -697,7 +697,7 @@ tags:
 |-----|-----------|
 | integrate_load_message_icons | `&$icons` |
 | integrate_bbc_buttons | `&$context['bbc_tags']`, `&$editor_tag_map` |
-| integrate_sceditor_options | `&$sce_options` |
+| [integrate_sceditor_options](/hooks/integrate-sceditor-options) | `&$sce_options` |
 | integrate_create_control_verification_pre | `&$verificationOptions`, `$do_test` |
 | integrate_create_control_verification_test' | `$thisVerification`, `&$verification_errors` |
 | integrate_create_control_verification_refresh' | `$thisVerification` |
