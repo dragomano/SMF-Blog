@@ -43,6 +43,5 @@ categories: [mods]
 
 {{ download('https://custom.simplemachines.org/index.php?mod=4321') }}
 {{ link('/lessons/mod-builder', 'Было же что-то похожее? Да, Mod Builder') }}
-{{ link('/lessons/shablon-dlja-sozdanija-modifikacii', 'А как создавать моды по старинке?') }}
 
 Сообщить об ошибках, поставить лайк, а также внести свой вклад можно в [репозитории проекта](https://github.com/dragomano/Simple-Mod-Maker).
