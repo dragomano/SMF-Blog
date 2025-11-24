@@ -31,6 +31,7 @@ theme:
     - navigation.indexes
     - navigation.footer
     - navigation.sections
+    - navigation.path
     - navigation.tabs
     - navigation.tabs.sticky
     - search.highlight
@@ -40,8 +41,8 @@ theme:
     - content.tabs.link
     - content.code.copy
     - content.code.select
+    - content.code.annotate
     - content.action.edit
-    - content.action.view
   font:
     text: Inter
     code: Fira Code
@@ -175,7 +176,6 @@ plugins:
       archive: false
   - awesome-nav # pip install mkdocs-awesome-nav
   - rss: # pip install mkdocs-rss-plugin
-      use_git: false
       match_path: posts/*
       date_from_meta:
         as_creation: date
