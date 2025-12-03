@@ -34,8 +34,9 @@ categories: [articles]
 ```ini
 [forum.local]
 
-http_engine = PHP-8.2
-public_dir  = {base_dir}\public
+http_engine = Apache
+php_engine  = PHP-8.2
+web_root    = {base_dir}\public
 ```
 * Распаковываем файлы из дистрибутива SMF в директорию `public`.
 * Распаковываем файлы из архива с локализацией в ту же директорию, с заменой.
