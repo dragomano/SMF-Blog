@@ -4,7 +4,7 @@ long_title: Highslide Image Viewer - лайтбокс для вложенных 
 description: Как настроить просмотр вложенных изображений во всплывающем окне.
 date: 2010-01-12
 authors: [digger]
-tags: [изображения, превью, анимация, SMF 2.0]
+tags: [изображения, превью, анимация, SMF 2.0, SMF 2.1]
 categories: [reviews]
 related:
   - mods/fancybox-4-smf
@@ -23,3 +23,4 @@ related:
 * Если в сообщении есть превью картинки с сервисов Imageshack.us, Photobucket.com, iPicture.ru, Radikal.ru, Keep4u.ru, Xs.to или Fotosik.pl, то отработает подгрузка оригинала. Так же, если вы разместите картинку внутри ссылки на полную картинку, она будет обработана.
 
 {{ download('https://custom.simplemachines.org/index.php?mod=1450') }}
+{{ alt_link('https://custom.simplemachines.org/index.php?mod=4447', 'Адаптация для SMF 2.1') }}
