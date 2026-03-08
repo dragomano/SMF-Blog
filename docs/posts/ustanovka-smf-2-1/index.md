@@ -17,7 +17,8 @@ categories: [articles]
 ## Текущие версии
 
 - 2.1.4 — более или менее стабильная. Используем
-- 2.1.5 и 2.1.6 — глючные, форум проекта завален баг-репортами. Ждём 2.1.7
+- 2.1.5 и 2.1.6 — глючные, форум проекта завален баг-репортами
+- 2.1.7 — вышла 8 марта 2026, тестируем
 - 3.0 — в разработке
 
 ## Установка
@@ -44,8 +45,8 @@ categories: [articles]
 
 {{ warning('', 'При установке этого пакета уже имеющиеся праздники будут удалены!') }}
 
-{{ download('https://download.simplemachines.org/index.php/smf_2-1-4_install.zip', 'Скачать SMF 2.1') }}
-{{ download('https://download.simplemachines.org/index.php/smf_2-1-4_language-russian.zip', 'Скачать локализацию') }}
+{{ download('https://download.simplemachines.org/index.php/smf_2-1-7_install.zip', 'Скачать SMF 2.1') }}
+{{ download('https://download.simplemachines.org/index.php/smf_2-1-7_language-russian.zip', 'Скачать локализацию') }}
 {{ link('/articles/smf-2-1-russian', 'Скачать сборку SMF 2.1 Russian') }}
 
 Если информация в статье вам пригодилась, [поблагодарите](/about/#спонсорская-поддержка) автора.
