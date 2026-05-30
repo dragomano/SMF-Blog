@@ -13,8 +13,6 @@ categories: [translations]
 
 {{ warning('Мод может быть полезен для устранения неправильного количества сообщений после каких-либо действий.') }}
 
-## Настройки
-
 {{ settings('Обслуживание форума → Ремонт.') }}
 
 {{ download('https://custom.simplemachines.org/index.php?mod=2324') }}

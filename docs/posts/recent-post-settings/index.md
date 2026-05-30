@@ -11,8 +11,6 @@ categories: [translations]
 
 <!-- more -->
 
-## Настройки
-
 {{ settings('Настройки модов → Блок "Последние сообщения".') }}
 
 {{ download('https://custom.simplemachines.org/index.php?mod=2975') }}

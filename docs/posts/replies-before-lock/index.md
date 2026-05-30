@@ -12,8 +12,6 @@ categories: [translations]
 
 <!-- more -->
 
-## Настройки
-
 {{ settings('Настройки тем.') }}
 
 {{ download('https://custom.simplemachines.org/index.php?mod=2685') }}

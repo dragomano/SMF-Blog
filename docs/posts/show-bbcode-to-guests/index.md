@@ -11,8 +11,6 @@ categories: [translations]
 
 <!-- more -->
 
-## Настройки
-
 {{ settings('Форум → Сообщения и темы → BB код.') }}
 
 {{ download('https://custom.simplemachines.org/index.php?mod=2861') }}

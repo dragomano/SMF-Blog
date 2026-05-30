@@ -14,8 +14,6 @@ categories: [translations]
 
 {{ img('Быстрый выбор разделов для модерирования', 'profile_moderator_management.png') }}
 
-## Настройки
-
 {{ settings('Профиль → Настройки профиля → Изменить профиль → Права модератора.') }}
 
 {{ download('https://custom.simplemachines.org/index.php?mod=833') }}
