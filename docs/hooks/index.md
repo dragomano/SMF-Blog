@@ -512,7 +512,7 @@ tags:
 | Хук | Параметры |
 |-----|-----------|
 | integrate_profile_areas | `&$profile_areas` |
-| integrate_pre_profile_areas | `&$profile_areas` (считается устаревшим с 2.1.4, используйте хук выше) |
+| --integrate_pre_profile_areas-- (считается устаревшим с 2.1.4, используйте `integrate_profile_areas`) | `&$profile_areas` |
 | integrate_verify_password | `$cur_profile['member_name']`, `$password`, `false`, `true` |
 | integrate_profile_save | `&$profile_vars`, `&$post_errors`, `$memID`, `$cur_profile`, `$current_area` |
 | integrate_reset_pass | `$cur_profile['member_name']`, `$cur_profile['member_name']`, `$_POST['passwrd2']` |
@@ -862,9 +862,11 @@ tags:
 
 | Хук | Параметры |
 |-----|-----------|
-| who_allowed | `&$allowedActions` |
+| integrate_who_allowed | `&$allowedActions` |
+| --who_allowed-- (считается устаревшим с 2.1.8, используйте `integrate_who_allowed`) | `&$allowedActions` |
 | integrate_whos_online | `$actions` |
-| whos_online_after | `&$urls`, `&$data` |
+| integrate_whos_online_after | `&$url_list`, `&$data` |
+| --whos_online_after-- (считается устаревшим с 2.1.8, используйте `integrate_whos_online_after`) | `&$urls`, `&$data` |
 | integrate_credits | |
 
 ## Sources/Xml.php
