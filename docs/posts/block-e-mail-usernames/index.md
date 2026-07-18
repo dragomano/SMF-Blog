@@ -5,6 +5,8 @@ description: Запрещаем регистрацию на форуме с оп
 date: 2012-02-28
 tags: [SMF 2.0, имейл, блокировка, регистрация]
 categories: [translations]
+related:
+  - reviews/allowed-email-domains
 ---
 
 Возможность запретить регистрацию при указании имейлов определенных провайдеров.
