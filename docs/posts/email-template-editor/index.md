@@ -3,7 +3,7 @@ title: Email Template Editor
 long_title: Email Template Editor - редактор шаблонов уведомлений
 description: Как изменить стандартные шаблоны почтовых уведомлений?
 date: 2011-02-04
-tags: [SMF 2.0, email, редактор, уведомления]
+tags: [SMF 2.0, имейл, редактор, уведомления]
 categories: [translations]
 ---
 
