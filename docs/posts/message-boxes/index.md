@@ -4,7 +4,7 @@ long_title: Message Boxes - красивые сообщения
 description: Добавляем красивое оформление для сообщений с помощью CSS.
 date: 2010-01-18
 authors: [diego]
-tags: [SMF 2.1, CSS, блоки, оформление, сообщения]
+tags: [SMF 2.1, оформление, сообщения, bbcode]
 categories: [translations]
 ---
 
