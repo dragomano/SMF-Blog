@@ -8,11 +8,18 @@ tags:
 
 SMF 3 всё ещё в процессе разработки, поэтому название и местоположение некоторых хуков могут к моменту релиза измениться.
 
+Замечания к списку:
+
+- Зачёркнутые хуки помечены как устаревшие (используйте указанную замену), однако их вызовы всё ещё существуют в коде для обратной совместимости: `integrate_mod_buttons`, `integrate_pre_log_stats`, `integrate_guest_actions`, `integrate_package_get`, `integrate_simple_actions`, `who_allowed`, `whos_online_after`.
+- «Особые» хуки (`integrate_admin_include`, `integrate_pre_include`, `integrate_theme_include`, `integrate_default_action`, `integrate_fallback_action`, `integrate_buffer`) вызываются не через `IntegrationHook`, а читаются напрямую из `modSettings`.
+- Динамические хуки (имя формируется на лету) отмечены подчёркиванием переменной части имени.
+
 ## Sources/Actions/Admin/ACP.php
 
 - integrate_prepare_db_settings (`&$config_vars`)
 - integrate_validateSession (`&$types`)
 - integrate_admin_include
+  Особый хук: вызывается напрямую из `modSettings` (список файлов для подключения), не через `IntegrationHook`
 - integrate_admin_areas (`&$this->admin_areas`)
 
 ## Sources/Actions/Admin/AntiSpam.php
@@ -117,6 +124,8 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 - integrate_view_members_params (`&$params`)
 - integrate_activate (`$member['username']`)
+- integrate_save_members_settings
+- integrate_modify_members_settings (`&$config_vars`)
 - integrate_manage_members (`&self::$subactions`)
 
 ## Sources/Actions/Admin/Mods.php
@@ -136,13 +145,10 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_save_permission_settings
 - integrate_post_moderation_mapping (`&$this->postmod_maps`)
 - integrate_modify_permission_settings (`&$config_vars`)
-- [integrate_permissions_list](/hooks/integrate-permissions-list) (`&self::$permissions`)
-  Рекомендованный способ добавления новых разрешений в SMF
 - integrate_load_permission_levels (`&$group_levels`, `&$board_levels`)
+  Также вызывается в `Sources/Permissions/Permission.php`
 - integrate_manage_permissions (`&self::$subactions`)
 - integrate_load_permissions (`&self::$permission_groups`, `&$permissions_by_scope`, `&self::$left_permission_groups`, `&$hidden_permissions`, `&$relabel_permissions`)
-- integrate_load_illegal_permissions
-- integrate_load_illegal_guest_permissions
 
 ## Sources/Actions/Admin/Posts.php
 
@@ -186,6 +192,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_save_search_engine_settings
 - integrate_modify_search_engine_settings (`&$config_vars`)
 - integrate_manage_search_engines (`&self::$subactions`)
+- integrate_robots_txt_rules (`&$rules`)
 
 ## Sources/Actions/Admin/Server.php
 
@@ -238,6 +245,11 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 - integrate_save_warning_settings (`&$save_vars`)
 - integrate_warning_settings (`&$config_vars`)
+
+## Sources/Actions/Moderation/Groups.php
+
+- integrate_manage_groups (`&self::$subactions`)
+  Также вызывается в `Sources/Actions/Groups.php`
 
 ## Sources/Actions/Moderation/Home.php
 
@@ -369,9 +381,9 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Actions/Login2.php
 
-- integrate_validate_login (`$_POST['user']`, `$_POST['passwrd'] ?? null`, `Config::$modSettings['cookieTime']`)
+- integrate_validate_login (`$_POST['user']`, `$_POST['passwrd'] ?? null`, `(!empty($_POST['cookieneverexp']) ? Cookie::LENGTH_ONE_YEAR : Cookie::LENGTH_DEFAULT) / 60`)
 - integrate_other_passwords (`&$other_passwords`)
-- integrate_login (`User::$profiles[User::$my_id]['member_name']`, `null`, `Config::$modSettings['cookieTime']`)
+- integrate_login (`$this->member->username`, `null`, `(!empty(Utils::$context['never_expire']) ? Cookie::LENGTH_ONE_YEAR : Cookie::LENGTH_DEFAULT) / 60`)
 
 ## Sources/Actions/Logout.php
 
@@ -423,6 +435,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Actions/Register2.php
 
+- integrate_extra_register_vars (`&$possible_strings`, `&$possible_ints`, `&$possible_floats`, `&$possible_bools`)
 - integrate_activate (`$reg_options['username']`)
 - integrate_register_check (`&$reg_options`, `&$reg_errors`)
 - integrate_register (`&$reg_options`, `&$theme_vars`, `&$known_ints`, `&$known_floats`)
@@ -495,7 +508,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Calendar/Event.php
 
-- integrate_construct_event (`$id`, `&`$props`)
+- integrate_construct_event (`$id`, `&$props`)
 - integrate_constructed_event (`$this`)
 - integrate_create_event (`$this`, `&$columns`, `&$params`)
 - integrate_modify_event (`$this->id`, `$this`, `&$set`, `&$params`)
@@ -519,23 +532,37 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Parsers/BBCodeParser.php
 
-- integrate_autolinker_schemes (`&self::$schemes`)
-  Используется автолинкером
-- integrate_attach_bbc_validate (`&$return_context`, `$current_attachment`, `$tag`, `$data`, `$disabled`, `$params`)
-  Настраивает HTML, созданный BB-тегом `attach`
-- integrate_bbc_print (`&$this->disabled`)
-  Для BB-тегов, требующих особого поведения в режиме печати
-- integrate_bbc_codes (`&self::$codes`, `&self::$no_autolink_tags`)
+- integrate_bbc_codes (`&self::$codes`, `&Autolinker::$no_autolink_tags`)
   Используется для добавления или изменения BB-тегов
 
 ## Sources/Parsers/MarkdownParser.php
 
-- integrate_markdown (`&$this->block_types`, `&$this->render_methods`)
+- integrate_markdown (`&$custom_block_types`, `&$custom_inline_types`, `&$custom_render_methods`)
 
 ## Sources/Parsers/SmileyParser.php
 
 - integrate_smileys (`&$this->smiley_preg_search`, `&$this->smiley_preg_replacements`)
   Используется для альтернативной обработки смайлов
+
+## Sources/Permissions/Permission.php
+
+- [integrate_permissions_list](/hooks/integrate-permissions-list) (`&self::$permissions`)
+  Рекомендованный способ добавления новых разрешений в SMF
+- integrate_load_permission_levels (`&$group_levels`, `&$board_levels`)
+  Также вызывается в `Sources/Actions/Admin/Permissions.php`
+- integrate_heavy_permissions_session (`&$heavy_permissions`)
+- integrate_load_illegal_guest_permissions
+- integrate_load_illegal_permissions
+
+## Sources/Permissions/UserPermissionSet.php
+
+- integrate_post_ban_permissions (`&$post_ban_permissions`)
+- integrate_warn_permissions (`&$warn_permissions`)
+  Изменение выбранных разрешений
+- integrate_allowed_to_general (`&$user_permissions`, `$permission_names`)
+  Переопределение общих разрешений
+- integrate_allowed_to_board (`&$allowed`, `$permission_names`, `$boards`, `$any`)
+  Переопределение прав доступа к форуму
 
 ## Sources/PersonalMessage/Folder.php
 
@@ -562,11 +589,17 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_load_search_apis (`&$loadedApis`)
 - integrate_search_weights (`&self::$weight_factors`)
 - integrate_search_blacklisted_words (`&$this->blacklisted_words`)
+  Также вызывается в `Sources/Search/APIs/Parsed.php`
 - integrate_search_params (`&$this->params`)
 - integrate_search_sort_columns (`&$this->sort_columns`)
 - integrate_subject_only_search_query (`&$subject_query`, `&$subject_query_params`)
 - integrate_subject_search_query (`&$subject_query`)
 - integrate_main_search_query (`&$main_query`)
+
+## Sources/Search/APIs/Parsed.php
+
+- integrate_search_blacklisted_words (`&$this->blacklisted_words`)
+  Также вызывается в `Sources/Search/SearchApi.php`
 
 ## Sources/Tasks/DailyMaintenance.php
 
@@ -588,6 +621,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 ## Sources/Tasks/SendDigests.php
 
 - integrate_daily_digest_lang (`&$langtxt`, `$lang`)
+- integrate_daily_digest_email (`&$email`, `$types`, `$notify_types`, `$langtxt`)
 
 ## Sources/Tasks/WeeklyMaintenance.php
 
@@ -616,9 +650,15 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_autolinker_schemes (`&self::$schemes`)
 - integrate_autolinker_fix_tags (`&self::$tags_to_fix`)
 
-## Sources/Autoloader.php
+## Sources/Avatar.php
 
-- integrate_autoload (`&$class_map`)
+- integrate_construct_avatar (`$this`)
+- integrate_set_avatar_data (`&$url`, `&$data`)
+
+## Sources/BBCode/Attach.php
+
+- integrate_attach_bbc_validate (`&$return_context`, `$current_attachment`, `$bbc`, `$data`, `$disabled`, `$params`)
+  Настраивает HTML, созданный BB-тегом `attach`
 
 ## Sources/Board.php
 
@@ -640,8 +680,10 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Config.php
 
-- integrate_load_average (`self::$modSettings['load_average']`)
+- integrate_autoload (`&$class_map`)
+- integrate_load_average (`Sapi::getLoadAverage()`)
 - integrate_pre_include
+  Особый хук: вызывается напрямую из `modSettings` (список файлов для подключения), не через `IntegrationHook`
 - integrate_pre_load
 - integrate_update_settings_file (`&self::$settings_defs`)
 
@@ -657,30 +699,30 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_load_message_icons (`&$icons`)
 - integrate_bbc_buttons (`&self::$bbc_tags`, `&$editor_tag_map`, `&self::$disabled_tags`)
   Позволяет изменять кнопки для вставки BB-тегов
+- integrate_sceditor_locale (`&$translation_map`)
 - integrate_sceditor_options (`&$this->sce_options`)
   Позволяет изменять `$this->sce_options`, что может пригодиться при добавлении различных плагинов для SCEditor
-
-## Sources/ErrorHandler.php
-
-- integrate_output_error (`$message`, `$error_type`, `$error_level`, `$file`, `$line`)
-- integrate_error_types (`&$other_error_types`, `&$error_type`, `$error_message`, `$file`, `$line`)
-  Позволяет изменять тип ошибки и узнавать об ошибках
 
 ## Sources/Forum.php
 
 - integrate_actions (`&self::$actions`)
+- integrate_init_action (`self::$current_action`)
 - --integrate_pre_log_stats (`&self::$unlogged_actions`)-- — Используйте `ActionInterface::isSimpleAction()`
 - --integrate_guest_actions (`&self::$guest_access_actions`)-- — Используйте `ActionInterface::isRestrictedGuestAccessAllowed()`
 - integrate_default_action
+  Особый хук: вызывается напрямую из `modSettings`, не через `IntegrationHook`
 - integrate_fallback_action
+  Особый хук: вызывается напрямую из `modSettings`, не через `IntegrationHook`
 
 ## Sources/Group.php
 
-- integrate_pre_add_membergroup
 - integrate_add_membergroup (`$this->id`, `$this->min_posts > -1`)
 - integrate_save_membergroup (`$this->id`)
 - integrate_add_members_to_group (`$members`, `$this->id`, `&$group_names`)
 - integrate_getMembergroupList (`&$groupCache`, `$group`)
+- integrate_groups_with_permissions (`&$groups`, `$permissions`, `$profile`)
+- integrate_groups_allowed_to (`&$allowed_denied`, `$permission`, `$board`)
+  Переопределение списка разрешённых групп
 
 ## Sources/ItemList.php
 
@@ -709,6 +751,11 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate\_`$this->current_action`\_areas (`&$this->data`)
   Позволяет изменение любого меню (`integrate_moderate_areas`, `integrate_pm_areas` и т. д.)
 
+## Sources/Mentions.php
+
+- mention_insert\_`$content_type` (`$content_id`, `&$members`)
+  Динамический хук системы упоминаний: `$content_type` заменяется на тип контента
+
 ## Sources/Msg.php
 
 - integrate_format_msg (`&$this->formatted`, `$this->id`)
@@ -718,10 +765,8 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_create_post (`&$msgOptions`, `&$topicOptions`, `&$posterOptions`, `&$message_columns`, `&$message_parameters`)
 - integrate_after_create_post (`$msgOptions`, `$topicOptions`, `$posterOptions`, `$message_columns`, `$message_parameters`)
   Возможность экспортировать созданное сообщение в стороннюю CMS, внешний скрипт и т. д.
-- integrate_before_create_topic (`&$msgOptions`, `&$topicOptions`, `&$posterOptions`, `&$topic_columns`, `&$topic_parameters`)
-- integrate_create_topic (`&$msgOptions`, `&$topicOptions`, `&$posterOptions`)
-- integrate_modify_topic (`&$topics_columns`, `&$update_parameters`, `&$msgOptions`, `&$topicOptions`, `&$posterOptions`)
-- integrate_modify_post (`&$messages_columns`, `&$update_parameters`, `&$msgOptions`, `&$topicOptions`, `&$posterOptions`, `&$messageInts`, `&$possible_topic_columns`)
+- integrate_modify_post (`&$messages_columns`, `&$update_parameters`, `&$msgOptions`, `&$topicOptions`, `&$posterOptions`, `&$messageInts`)
+- integrate_msg_update (`&$set`, `&$params`, `&$msgOptions`, `&$topicOptions`, `&$posterOptions`)
 - integrate_after_approve_posts (`$approve`, `$msgs`, `$topic_changes`, `$member_post_changes`)
 - integrate_pre_remove_message (`$message`, `$decreasePostCount`, `$row`)
 - integrate_remove_message (`$message`, `$row`, `$recycle`)
@@ -737,6 +782,9 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 - integrate_parser_output_handlers (`&$handlers`)
 - integrate_parser_options (`&$options`)
+- integrate_parser_static_vars
+- integrate_bbc_print (`&$this->disabled`)
+  Для BB-тегов, требующих особого поведения в режиме печати
 - integrate_pre_parsebbc (`&$string`, `&$smileys`, `&$options['cache_id']`, `&$options['parse_tags']`)
   Позволяет вносить изменения перед парсингом
 - integrate_post_parsebbc (`&$string`, `$smileys`, `$options['cache_id']`, `$options['parse_tags']`)
@@ -747,7 +795,13 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 - integrate_poll_buttons
 - integrate_poll_add_edit (`$this->id`, `$is_edit`)
+
+## Sources/Actions/PollVote.php
+
 - integrate_poll_vote (`$poll->id`, `$choices`)
+
+## Sources/Actions/PollRemove.php
+
 - integrate_poll_remove (`$poll->id`)
 
 ## Sources/Profile.php
@@ -758,10 +812,19 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_setup_profile_context (`&$fields`)
 - integrate_profile_save (`&Profile::$member->new_data`, `&Profile::$member->save_errors`, `Profile::$member->id`, `Profile::$member->data`, `Menu::$loaded['profile']->current_area`)
 - integrate_profile_profileSaveGroups (`$value`, `$additional_groups`)
+- before_profile_save_avatar (`&$value`)
+- after_profile_save_avatar
 - integrate_save_custom_profile_fields (`&$this->new_cf_data['updates']`, `&$this->log_changes`, `&$this->cf_save_errors`, `true`, `$this->id`, `$area`, `!self::$member->post_sanitized`, `&$deletes`)
 
 ## Sources/Security.php
 
+- integrate_generate_password (`&$password`)
+- integrate_validatePassword (`$password`, `$username`, `$restrict_in`, `&$pass_error`)
+- integrate_validate_username (`$username`, `&$errors`)
+  Добавление дополнительных проверок при валидации пользователя
+- integrate_check_name (`$checkName`, `&$is_reserved`, `$current_id_member`, `$is_name`)
+  Добавление дополнительных проверок на то, не входит ли имя пользователя в список зарезервированных имён
+- integrate_security_files (`&$security_files`)
 - integrate_spam_protection (`&$timeOverrides`)
 
 ## Sources/ServerSideIncludes.php
@@ -782,6 +845,12 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_ssi_recentEvents (`&$return`)
 - integrate_ssi_recentAttachments (`&$attachments`)
 - integrate_SSI
+
+## Sources/Services/ErrorHandlerService.php
+
+- integrate_output_error (`$message`, `$error_type`, `$error_level`, `$file`, `$line`)
+- integrate_error_types (`&$other_error_types`, `&$error_type`, `$error_message`, `$file`, `$line`)
+  Позволяет изменять тип ошибки и узнавать об ошибках
 
 ## Sources/Session.php
 
@@ -807,13 +876,13 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_menu_buttons (`&$buttons`)
   Редактирование пунктов меню
 - integrate_current_action (`&$current_action`)
-- integrate_security_files (`&$securityFiles`)
 - integrate_pre_javascript_output (`&$do_deferred`)
   Мминимизация/оптимизация файлов и переменных Javascript
 - integrate_pre_css_output
   Мминимизация/оптимизация файлов CSS
 - integrate_wrap_action
 - integrate_theme_include
+  Особый хук: вызывается напрямую из `modSettings` (список файлов для подключения), не через `IntegrationHook`
 - integrate_load_theme
 - --integrate_simple_actions (`&$this->simpleActions`, `&$this->simpleAreas`, `&$this->simpleSubActions`, `&$this->extraParams`, `&$this->xmlActions`)-- — Используйте `ActionInterface::isSimpleAction()`
 
@@ -825,6 +894,9 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 ## Sources/Topic.php
 
+- integrate_before_create_topic (`&$msgOptions`, `&$topicOptions`, `&$posterOptions`, `&$topic_columns`, `&$topic_parameters`)
+- integrate_create_topic (`&$msgOptions`, `&$topicOptions`, `&$posterOptions`)
+- integrate_modify_topic (`&$topics_columns`, `&$update_parameters`, `&$msgOptions`, `&$topicOptions`, `&$posterOptions`)
 - integrate_remove_topics_before (`$topics`, `$recycle_board`)
 - integrate_remove_topics (`$topics`)
 - integrate_display_topic (`&$topic_selects`, `&$topic_joins`, `&$topic_parameters`)
@@ -838,31 +910,17 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 
 - integrate_member_context (`&$this->formatted`, `$this->id`, `$display_custom_fields`)
 - integrate_mod_cache
-- integrate_post_ban_permissions (`&self::$post_ban_permissions`)
-- integrate_warn_permissions (`&self::$warn_permissions`)
-  Изменение выбранных разрешений
 - integrate_validateSession (`&$types`)
 - integrate_verify_password (`$this->username`, `$_POST[$type . '_pass']`, `false`)
-- integrate_allowed_to_general (`&$user_permissions`, `$permission`)
-  Переопределение общих разрешений
-- integrate_allowed_to_board (`&$return`, `$permission`, `$boards`, `$any`)
-  Переопределение прав доступа к форуму
-- integrate_heavy_permissions_session (`&self::$heavy_permissions`)
 - integrate_boards_allowed_to (`&$boards`, `$deny_boards`, `$permissions`, `$check_access`, `$simple`)
   Переопределение прав доступа к разделам
-- integrate_set_avatar_data (`&$image`, `&$data`)
 - integrate_change_member_data (`$member_names`, `$var`, `&$data[$var]`, `&self::$knownInts`, `&self::$knownFloats`)
+- integrate_save_member_data (`$members`, `&$set`, `&$params`)
 - integrate_delete_members (`$users`)
-- integrate_validatePassword (`$password`, `$username`, `$restrict_in`, `&$pass_error`)
-- integrate_validate_username (`$username`, `&$errors`)
-  Добавление дополнительных проверок при валидации пользователя
-- integrate_check_name (`$checkName`, `&$is_reserved`, `$current_id_member`, `$is_name`)
-  Добавление дополнительных проверок на то, не входит ли имя пользователя в список зарезервированных имён
-- integrate_groups_allowed_to (`&$member_groups[$permission]`, `$permission`, `$board_id`)
-  Переопределение списка разрешённых групп
+- integrate_anonymize (`$member`)
 - integrate_user_info
   При работе с этим хуком рекомендуется заменить любое использование переменной `$user_info` структурой `SMF\User::$me`, либо использовать хук, указанный ниже
-- integrate_user_properties (`$this`) (^3.0 Alpha 1)
+- integrate_user_properties (`$this`, `&$profile`) (^3.0 Alpha 1)
   Устанавливает свойства объекта на основе данных в `User::$profiles[$this->id]`.
 - integrate_verify_user
   Позволяет проверять личность текущего пользователя
@@ -870,7 +928,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
   Проверка двухфакторной аутентификации при `force_tfasetup = true`
 - integrate_verify_tfa (`self::$my_id`, `self::$profiles[self::$my_id]`)
   Валидация двухфакторной аутентификации
-- integrate_load_member_data (`&$select_columns`, `&$select_tables`, `&$dataset`)
+- integrate_load_member_data (`&$selects`, `&$joins`, `$dataset`)
   Позволяет добавлять данные о выбранных участниках
 - integrate_load_min_user_settings (`&self::$profiles`)
 
@@ -879,6 +937,7 @@ SMF 3 всё ещё в процессе разработки, поэтому н�
 - integrate_download_headers
 - integrate_redirect (`&$setLocation`, `&$refresh`, `&$permanent`)
 - integrate_buffer
+  Особый хук: вызывается напрямую из `modSettings`, не через `IntegrationHook`
 - integrate_exit (`$do_footer`)
 
 ## Sources/Verifier.php
