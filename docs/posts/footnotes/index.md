@@ -2,26 +2,27 @@
 title: Footnotes
 long_title: Footnotes - сноски к тексту
 description: Как добавить сноску к тексту в сообщении на форуме SMF?
-date: 2010-02-13
-tags: [SMF 2.0, сноска, сообщения]
-categories: [translations]
+date: 2026-08-18
+authors: [digger]
+tags: [SMF 2.1, сноски, сообщения, bbcode]
+categories: [reviews]
 ---
 
-Добавление в редактор сообщений кнопки для создания сносок к тексту.
+Добавление возможности создавать сноски к тексту.
 
 <!-- more -->
 
 {{ img('Пример сноски в сообщении', 'footnotes.png') }}
 
-{{ download('https://custom.simplemachines.org/index.php?mod=1771') }}
+## Особенности
 
-??? Русификация
+- Форумный тег: `[nb]текст сноски[/nb]`.
+- Кнопка редактора вставляет `[nb]...[/nb]`.
+- Нумерованные ссылки между каждой ссылкой и соответствующей ей сноской.
+- Стандартный предпросмотр сообщения отображает сноски до отправки сообщения.
+- Вложенные сноски.
+- Отдельный список сносок внутри каждой цитаты, чтобы сноски из цитируемого текста не смешивались со сносками автора.
 
-    Добавить в файл `Themes/default/languages/Modifications.russian-utf8.php`:
-
-    ```php
-    <?php
-
-    // Footnotes
-    $txt['noisen_footnote'] = 'Сноска';
-    ```
+{{ download('https://custom.simplemachines.org/index.php?mod=4490') }}
+{{ github('https://github.com/realdigger/SMF-Footnotes') }}
+{{ link('https://custom.simplemachines.org/index.php?mod=1771', 'Аналог для SMF 2.0') }}
