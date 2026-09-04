@@ -5,8 +5,6 @@ description: Как добавить на главной странице фор
 date: 2026-09-03
 tags: [кнопки, SMF 2.1]
 categories: [translations]
-related:
-  - translations/breeze
 ---
 
 Добавляет кнопку «Новое обсуждение» в стиле XenForo над списком разделов на главной странице форума.
