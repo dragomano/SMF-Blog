@@ -55,7 +55,7 @@ Optimus поможет и подскажет:
 
 ## Ссылки
 
-{{ download('https://github.com/dragomano/Optimus/releases/tag/v2.7.6', 'Скачать для SMF 2.0') }}
+{{ download('https://github.com/dragomano/Optimus/releases/tag/v2.7.7', 'Скачать для SMF 2.0') }}
 {{ download('https://custom.simplemachines.org/index.php?mod=2659', 'Скачать для SMF 2.1') }}
 
 {{ download('https://elkarte.github.io/addons//feature/Optimus.html', 'Скачать для ElkArte') }}
