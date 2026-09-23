@@ -8,6 +8,7 @@ categories: [reviews]
 related:
   - reviews/stop-forum-spam
   - mods/bad-behavior
+  - mods/spam-judge
 ---
 
 Мод добавляет мощную защиту от спама.

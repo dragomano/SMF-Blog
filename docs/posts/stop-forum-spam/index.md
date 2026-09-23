@@ -9,6 +9,7 @@ categories: [reviews]
 related:
   - mods/stop-spammer
   - mods/bad-behavior
+  - mods/spam-judge
 ---
 
 Обнаружение спама с помощью API Stop Forum Spam.
