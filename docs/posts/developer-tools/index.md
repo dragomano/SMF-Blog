@@ -29,7 +29,7 @@ categories: [reviews]
 
 ```xml
 <devtools>
-    <packagename>{CUSTOMIZATION-NAME}_{VERSION-}</packagename>
+    <packagename>{CUSTOMIZATION_NAME}_{VERSION_}</packagename>
     <exclusion>.git</exclusion>
     <exclusion>.scrutinizer.yml</exclusion>
     <exclusion>screenshots</exclusion>
@@ -37,6 +37,17 @@ categories: [reviews]
 ```
 
 Здесь `packagename` отвечает за [шаблон файла архива](https://github.com/jdarwood007/smfmod_devtools/wiki/File), а `exclusion` задаёт исключения, которые не будут добавляться в архив.
+
+При формировании имени архива доступны следующие замены:
+
+| Шаблон | Результат для примера `My Customization`, версии `1.2.3` |
+| --- | --- |
+| `{VERSION}` | `1.2.3` |
+| `{VERSION-}` | `1-2-3` |
+| `{VERSION_}` | `1_2_3` |
+| `{CUSTOMIZATION-NAME}` | `My-Customization` |
+| `{CUSTOMIZATION_NAME}` | `My_Customization` |
+| `{CUSTOMIZATION NAME}` | `My Customization` |
 
 {{ download('https://custom.simplemachines.org/index.php?mod=4358') }}
 {{ github('https://github.com/jdarwood007/smfmod_devtools/releases') }}
