@@ -30,7 +30,7 @@ categories: [translations]
     $txt['HighlightSearchKeywords_tab_heading'] = 'Подсветка ключевых слов';
     $txt['HighlightSearchKeywords_color'] = 'Цвет в 16-ричной системе';
     $txt['HighlightSearchKeywords_heading'] = '<strong>Назначенные цвета для ключевых слов:</strong>';
-    $txt['HighlightSearchKeywords_explanation'] = 'Цвета должны иметь длину в 6 символов, без пробелов, с использованием <a href="http://en.wikipedia.org/wiki/Web_colors">цветовых кодов RGB Hexadecimal Web</a>.';
+    $txt['HighlightSearchKeywords_explanation'] = 'Цвета должны иметь длину в 6 символов, без пробелов, с использованием <a href="https://en.wikipedia.org/wiki/Web_colors">цветовых кодов RGB Hexadecimal Web</a>.';
     $txt['HighlightSearchKeywords_save_button'] = 'Сохранить и добавить новый';
     // Highlight Search Keywords Mod Text END
     ```

@@ -35,5 +35,5 @@ categories: [translations]
     $txt['disqus_board_enable'] = 'Подключить систему комментариев Disqus';
     $txt['disqus_board_enable_desc'] = '';
     $txt['disqus_id'] = 'Введите здесь \'short name\' (короткое имя), которое указали при регистрации форума в Disqus.';
-    $txt['disqus_configure_desc'] = 'Перед подключением Disqus необходимо зарегистрироваться на сайте <a href="http://www.disqus.com" target="_blank">disqus.com</a>';
+    $txt['disqus_configure_desc'] = 'Перед подключением Disqus необходимо зарегистрироваться на сайте <a href="https://disqus.com" target="_blank">disqus.com</a>';
     ```

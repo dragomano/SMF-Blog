@@ -184,6 +184,6 @@ if (isset($context['current_action']) && $context['current_action'] === 'my_acti
 
 Также по коду функции `WrapAction` можно заметить, что в конце вызова нашей пользовательской функции `test` будет задействован и хук `integrate_wrap_action`.
 
-{{ note("Больше примеров использования `$settings['catch_action']` можно найти в файлах темы оформления [Spirate](https://github.com/dhayzon/Spirate/blob/main/index.template.php#L89") }}
+{{ note("Больше примеров использования `$settings['catch_action']` можно найти в файлах темы оформления [Spirate](https://github.com/dhayzon/Spirate/blob/main/index.template.php#L89)") }}
 
 Итак, подытожим: шаблон — это файл вида `XXX.template.php`, подшаблон — функция вида `template_xxx` внутри файла шаблона, слои — парные функции вида `template_xxx_above` (отображается НАД основным контентом) и `template_xxx_below` (отображается ПОД основным контентом) в том же файле. Подробнее о слоях можно узнать в статье [Изучаем слои](/lessons/izuchaem-sloi).

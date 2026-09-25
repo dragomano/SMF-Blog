@@ -15,7 +15,7 @@ categories: [translations]
 
 ## Особенности
 
-- Для работы с модом требуются публичный и приватный ключи, получить которые можно на сайте [recaptcha.net](https://www.google.com/recaptcha/intro/)
+- Для работы с модом требуются публичный и приватный ключи, получить которые можно в [Google reCAPTCHA](https://www.google.com/recaptcha/admin)
 - Несколько стилей капчи.
 
 {{ download('https://custom.simplemachines.org/index.php?mod=1044') }}

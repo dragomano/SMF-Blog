@@ -228,5 +228,5 @@ categories: [lessons]
 
 ## Полезняшки
 
-{{ link('https://wiki.simplemachines.org/smf/Category:Package_SDK', 'Package SDK') }}
-{{ download('/mods/simple-mod-maker', 'Simple Mod Maker') }}
+{{ link('/mods/simple-mod-maker', 'Simple Mod Maker') }}
+{{ download('https://wiki.simplemachines.org/smf/Category:Package_SDK', 'Package SDK') }}
