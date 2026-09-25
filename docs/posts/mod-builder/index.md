@@ -8,7 +8,7 @@ tags: [модификации, сборщик]
 categories: [lessons]
 ---
 
-В продолжение темы [Шаблон для создания модификации](/lessons/shablon-dlja-sozdanija-modifikacii), а также как обзор программы **Mod Builder** — сборщика модификаций для SMF.
+Небольшой обзор программы **Mod Builder** — сборщика модификаций для SMF.
 
 <!-- more -->
 
