@@ -64,4 +64,4 @@ comments: false
 - мод авторизации на форуме через социальные сети (в бета-статусе)
 - мод автовставки роликов с популярных российских медиасервисов (пока в альфа-статусе)
 
-Благодарности принимаются в виде [чашечек кофе](https://ko-fi.com/dragomano/) или на [карточку](https://www.tbank.ru/rm/r_LqkuwxVlvl.spMjcXLuTA/UsNvg35786/).
+Благодарности принимаются в виде [доната](https://app.lava.top/dragomano?tabId=donate) или на [карточку](https://www.tbank.ru/rm/r_LqkuwxVlvl.spMjcXLuTA/UsNvg35786/).
