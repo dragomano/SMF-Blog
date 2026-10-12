@@ -59,4 +59,4 @@ Optimus поможет и подскажет:
 {{ download('https://custom.simplemachines.org/index.php?mod=2659', 'Скачать для SMF 2.1') }}
 
 {{ download('https://elkarte.github.io/addons/feature/Optimus.html', 'Скачать для ElkArte') }}
-{{ note_link('https://ko-fi.com/post/All-premium-addons-for-Optimus-U7U3VKQHJ', 'Премиум-аддоны') }}
+{{ note_link('https://app.lava.top/products/a1fc05a8-f7d9-4f3f-8619-cdcf691e2555', 'Премиум-аддоны') }}
