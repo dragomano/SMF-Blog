@@ -7,6 +7,7 @@ tags: [SMF 2.0, SMF 2.1, галерея, изображения]
 categories: [translations]
 related:
   - translations/aeva-media
+  - translations/smf-gallery-pro
 ---
 
 Небольшая модификация, добавляющая галерею в качестве дополнения для форума.

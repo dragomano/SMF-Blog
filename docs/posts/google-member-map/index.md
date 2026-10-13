@@ -3,6 +3,7 @@ title: Google Member Map
 long_title: Google Member Map - пользователи форума на карте мира
 description: Как быстро интегрировать карты Google Maps на форум SMF?
 date: 2010-02-25
+authors: [vbgamer45]
 tags: [SMF 2.0, SMF 2.1, карта, пользователи]
 categories: [translations]
 ---

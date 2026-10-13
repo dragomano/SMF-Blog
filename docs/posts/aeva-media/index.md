@@ -7,6 +7,8 @@ tags: [SMF 2.0, youtube, аудио, видео, галерея, изображ�
 categories: [translations]
 related:
   - translations/simple-audio-video-embedder
+  - translations/smf-gallery
+  - translations/smf-gallery-pro
 ---
 
 Галерея для SMF и автовставка роликов в одном флаконе. **Aeva Media** поддерживает множество распространённых форматов аудио и видео.

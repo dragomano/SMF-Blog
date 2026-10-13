@@ -3,6 +3,7 @@ title: nCode Image Resizer
 long_title: nCode Image Resizer - превью изображений в сообщениях
 description: Как сделать просмотр оригинального изображения при клике на его превью в сообщении.
 date: 2010-06-05
+authors: [vbgamer45]
 tags: [SMF 2.0, изображения, миниатюры, превью]
 categories: [translations]
 ---

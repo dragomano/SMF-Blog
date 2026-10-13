@@ -3,6 +3,7 @@ title: EzPortal
 long_title: EzPortal - система портала для форумов SMF
 description: Обзор движка портала EzPortal для форумов на движке SMF.
 date: 2021-01-24
+authors: [vbgamer45]
 tags: [SMF 2.0, SMF 2.1, портал, блоки, страницы, мини-чат]
 categories: [translations]
 related:

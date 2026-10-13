@@ -3,6 +3,7 @@ title: Most Popular Topic Today
 long_title: Most Popular Topic Today - вывод самой популярной темы
 description: Как добавить блок с самой популярной темой на главной странице форума?
 date: 2010-05-21
+authors: [vbgamer45]
 tags: [SMF 2.0, популярность, темы]
 categories: [translations]
 ---
