@@ -61,7 +61,6 @@ comments: false
 
 - обновление мода [SimpleShop](/mods/simpleshop) для SMF 2.1
 - обновление мода [Clubbing](/mods/clubbing) для SMF 2.1
-- мод авторизации на форуме через социальные сети (в бета-статусе)
 - мод автовставки роликов с популярных российских медиасервисов (пока в альфа-статусе)
 
 Благодарности принимаются в виде [доната](https://app.lava.top/dragomano?tabId=donate) или на [карточку](https://www.tbank.ru/rm/r_LqkuwxVlvl.spMjcXLuTA/UsNvg35786/).
