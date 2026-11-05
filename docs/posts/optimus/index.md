@@ -60,3 +60,5 @@ Optimus поможет и подскажет:
 
 {{ download('https://elkarte.github.io/addons/feature/Optimus.html', 'Скачать для ElkArte') }}
 {{ note_link('https://app.lava.top/products/a1fc05a8-f7d9-4f3f-8619-cdcf691e2555', 'Премиум-аддоны') }}
+
+{{ tip('Для первых 10 покупателей премиум-аддонов: **LETCQT**.', 'Промокод') }}
