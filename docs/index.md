@@ -46,4 +46,20 @@ Simple Machines Forum — бесплатный профессиональный 
 
     [:octicons-arrow-right-24: Перейти](/lessons/)
 
+  - :fontawesome-solid-plug: **Хуки**
+
+    ---
+
+    Все хуки SMF, которые пригодятся при создании модов, с параметрами и примерами.
+
+    [:octicons-arrow-right-24: Перейти](/hooks/)
+
+  - :fontawesome-solid-feather-pointed: **Статьи**
+
+    ---
+
+    Познавательные статьи на различные темы, относящиеся к SMF и его форкам.
+
+    [:octicons-arrow-right-24: Перейти](/articles/)
+
 </div>
