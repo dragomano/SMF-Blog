@@ -50,4 +50,4 @@ categories: [articles]
 {{ download('https://download.simplemachines.org/index.php/smf_2-1-8_language-russian.zip', 'Скачать локализацию') }}
 {{ link('/articles/smf-2-1-russian', 'Скачать сборку SMF 2.1 Russian') }}
 
-Если информация в статье вам пригодилась, [поблагодарите](/about/#спонсорская-поддержка) автора.
+Если информация в статье вам пригодилась, [поблагодарите](/about/#sponsorskaia-podderzhka) автора.

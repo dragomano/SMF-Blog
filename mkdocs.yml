@@ -106,9 +106,7 @@ markdown_extensions:
       permalink: ⚓︎
       permalink_title: Постоянная ссылка
       toc_depth: 2
-      slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
+      slugify: !!python/name:slugify.slugify
   - admonition
   - pymdownx.details
   - pymdownx.critic
