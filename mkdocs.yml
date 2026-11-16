@@ -142,6 +142,7 @@ plugins:
       redirect_maps:
         "kwork.md": "https://kwork.ru?ref=34293"
         "hosting.md": "https://billing.lite-host.in/aff.php?aff=1544"
+        "mods/clubbing/index.md": "posts/group-buys/index.md"
   #- privacy:
   #    enabled: !ENV [CI, false]
   - tags
